@@ -20,6 +20,7 @@ import java.util.stream.IntStream;
 import gpsUtil.location.Attraction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import gpsUtil.GpsUtil;
@@ -40,6 +41,7 @@ public class TourGuideService {
 	public final Tracker tracker;
 	boolean testMode = true;
 
+	@Autowired
 	public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService) {
 		this.gpsUtil = gpsUtil;
 		this.rewardsService = rewardsService;
@@ -49,11 +51,14 @@ public class TourGuideService {
 		if (testMode) {
 			logger.info("TestMode enabled");
 			logger.debug("Initializing users");
+			InternalTestHelper.setInternalUserNumber(100);
 			initializeInternalUsers();
 			logger.debug("Finished initializing users");
 		}
 		tracker = new Tracker(this);
 		addShutDownHook();
+		logger.info("✅ TourGuideService constructor called");
+
 	}
 
 	public List<UserReward> getUserRewards(User user) {
@@ -68,8 +73,12 @@ public class TourGuideService {
 	}
 
 	public User getUser(String userName) {
-
-		return internalUserMap.get(userName);
+		User user = internalUserMap.get(userName);
+		if (user == null) {
+			logger.error("User not found: " + userName);
+		}
+		return user;
+//		return internalUserMap.get(userName);
 	}
 
 	public List<User> getAllUsers() {
@@ -148,6 +157,8 @@ public class TourGuideService {
 			internalUserMap.put(userName, user);
 		});
 		logger.debug("Created " + InternalTestHelper.getInternalUserNumber() + " internal test users.");
+		logger.info("Internal users: " + internalUserMap.keySet());
+
 	}
 
 	private void generateUserLocationHistory(User user) {
