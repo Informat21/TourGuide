@@ -259,8 +259,8 @@ public class TourGuideService {
 		Locale.setDefault(Locale.US);
 
 		if (testMode) {
-			logger.info("TestMode enabled");
-			InternalTestHelper.setInternalUserNumber(100);  // ⚠️ nombre d’utilisateurs à tester
+			logger.info("TestMode enabled, internalUserNumber=" + InternalTestHelper.getInternalUserNumber());
+//			InternalTestHelper.setInternalUserNumber(100);  // ⚠️ nombre d’utilisateurs à tester
 			initializeInternalUsers();
 		}
 
