@@ -141,7 +141,13 @@ public class TestPerformance {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 
 		// ⚠️ nombre d'utilisateurs
-		InternalTestHelper.setInternalUserNumber(100);
+//		InternalTestHelper.setInternalUserNumber(100);
+		String userCountProperty = System.getProperty("user.count");
+		int userCount = (userCountProperty != null) ? Integer.parseInt(userCountProperty) : 100;
+		InternalTestHelper.setInternalUserNumber(userCount);
+
+		System.out.println("🧪 Running highVolumeTrackLocation with " + userCount + " users");
+
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
 
 		StopWatch stopWatch = new StopWatch();
@@ -163,7 +169,13 @@ public class TestPerformance {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 
-		InternalTestHelper.setInternalUserNumber(100);
+//		InternalTestHelper.setInternalUserNumber(100);
+		String userCountProperty = System.getProperty("user.count");
+		int userCount = (userCountProperty != null) ? Integer.parseInt(userCountProperty) : 100;
+		InternalTestHelper.setInternalUserNumber(userCount);
+
+		System.out.println("🧪 Running highVolumeGetRewards with " + userCount + " users");
+
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
 
 		// Ajout d'une visitedLocation pour chaque user pour déclencher les rewards
