@@ -25,9 +25,7 @@ public class Tracker extends Thread {
 		executorService.submit(this);
 	}
 
-	/**
-	 * Assures to shut down the Tracker thread
-	 */
+
 	public void stopTracking() {
 		stop = true;
 		executorService.shutdownNow();

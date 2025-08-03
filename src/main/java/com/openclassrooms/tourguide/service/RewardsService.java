@@ -113,7 +113,7 @@ import java.util.concurrent.Executors;
 @Service
 public class RewardsService {
 
-	// Grand pool adapté aux appels I/O bound (réseau / calcul)
+
 	private final ExecutorService rewardExecutor = Executors.newFixedThreadPool(500);
 
 	private static final double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;

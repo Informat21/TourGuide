@@ -260,7 +260,6 @@ public class TourGuideService {
 
 		if (testMode) {
 			logger.info("TestMode enabled, internalUserNumber=" + InternalTestHelper.getInternalUserNumber());
-//			InternalTestHelper.setInternalUserNumber(100);  // ⚠️ nombre d’utilisateurs à tester
 			initializeInternalUsers();
 		}
 
