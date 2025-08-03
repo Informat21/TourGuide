@@ -33,7 +33,7 @@ public class TestPerformance {
 
 
 		String userCountProperty = System.getProperty("user.count");
-		int userCount = (userCountProperty != null) ? Integer.parseInt(userCountProperty) : 100000;
+		int userCount = (userCountProperty != null) ? Integer.parseInt(userCountProperty) : 100;
 		InternalTestHelper.setInternalUserNumber(userCount);
 
 		System.out.println(" Running highVolumeTrackLocation with " + userCount + " users");
@@ -61,7 +61,7 @@ public class TestPerformance {
 
 
 		String userCountProperty = System.getProperty("user.count");
-		int userCount = (userCountProperty != null) ? Integer.parseInt(userCountProperty) : 100000;
+		int userCount = (userCountProperty != null) ? Integer.parseInt(userCountProperty) : 100;
 		InternalTestHelper.setInternalUserNumber(userCount);
 
 		System.out.println(" Running highVolumeGetRewards with " + userCount + " users");

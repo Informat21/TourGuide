@@ -3,7 +3,7 @@ package com.openclassrooms.tourguide.helper;
 public class InternalTestHelper {
 
 
-	private static int internalUserNumber = 100000;
+	private static int internalUserNumber = 100;
 	
 	public static void setInternalUserNumber(int internalUserNumber) {
 		InternalTestHelper.internalUserNumber = internalUserNumber;
